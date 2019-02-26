@@ -18,8 +18,8 @@ router.get(`${apiUrl}/contact/:id`, contactController.getContact);
 router.delete(`${apiUrl}/contact/:id`, contactController.deleteContact);
 
 router.post(`${apiUrl}/message`, smsValidator, smsController.sendMessage);
-router.get(`${apiUrl}/message/:sentId`, smsValidator, smsController.getSentMessages);
-router.get(`${apiUrl}/message/:receivedId`, smsValidator, smsController.getRecievedMessages);
+router.get(`${apiUrl}/message/:sentId/sent`, smsController.getSentMessages);
+router.get(`${apiUrl}/message/:receivedId/received`, smsController.getRecievedMessages);
 
 
 export default router;
