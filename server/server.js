@@ -8,16 +8,11 @@ import routes from './routes';
 
 dotenv.config();
 
-mongoose.connect(config.dtb);
-const dtb = mongoose.connection;
-
-dtb.on('error', (err) => {
-  console.error('Connection error: ', err);
-});
-
-dtb.once('open', () => {
-  console.log('Database connection successful');
-});
+if (process.env.NODE_ENV === 'test') {
+  mongoose.connect(config.test);
+} else {
+  mongoose.connect(config.dtb);
+};
 
 const app = express();
 const port = process.env.PORT || 3000;
